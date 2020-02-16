@@ -20,6 +20,9 @@ jobs:
     - go: tip
   fast_finish: true
 
+notifications:
+  email: false
+
 script:
   - go test -v
   - go build -v
