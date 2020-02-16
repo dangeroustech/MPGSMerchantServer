@@ -22,6 +22,8 @@ jobs:
 
 notifications:
   email: false
+  slack:
+    secure: cvRCz8+/QQUeBbKysYHQzFsLLPSj2UaOSCDzqr5MUzSXcbmZ1QoQuNj7iqDQ0FNilMZZ9mIU6gTl+1JAnJUjpp+8qKty27yRN9k3iolkzU1lxo8uZSqFs1jQo9LsXdeZzbap4yo7LZISuJLyszHr/k037yJF/pByl+0/0cqUxbCDqB549ninXChGpgZCJKcdsfOyfExUzjE2sn/jvmWqftqqTjfeWkQNenTRW2ymbu2+xtba+wuw/7Nmh4dGFRkep6zEXkL7a8/OsAFOBcUXxaeQZw+RaeF799G8NW0fmh1K+DcjVw1d45Pqfq3BZONY8f+lbU3+p5b+EWWCAdN1pbFvV/3mEMilunZtZjus8gk0xsCzSJHt/8c8zZh1nnrl6GWlfiaDZhfIyL0sw8rnu/xPqJ2QBM0g8mokKGRRLUQFiCxm1anGeLssmqJsdlipLe45NLZnaDU3qXOgJITtSayma8jwLJCjzUOARo+kfAm2pDyKVI41ztlQPZbPSSSTE/NBbd9ue56L9k8KgDB5i5I2H+OncenRxBBVQRZRDG6HvruuJgRMoBkqYv1gaXTIblsiBGgjqe+VsBNKjrYnvzoPImfJkEkAVG/mI0fRdAcw0fvxeBOeva4NabKwfyYUve2BgvBmGhKON6+OtLnFUGyYP/Zn78hpJxQrGV240pI=
 
 script:
   - go test -v
