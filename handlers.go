@@ -23,7 +23,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 
-	//create and make POST request
+	//build request JSON
 	jsonData := map[string]interface{}{
 		"correlationId": "001",
 		"session": map[string]string{
@@ -31,6 +31,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 	jsonValue, _ := json.Marshal(jsonData)
+	//make request
 	request, _ := http.NewRequest("POST", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/testflyte/session", bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
 	request.SetBasicAuth(user, pass)
@@ -39,13 +40,13 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 
 	//read the response
 	if err != nil {
+		//empty response
 		Logger("An Error Occurred: Nil Response")
 
 		response := map[string]string{
 			"id":     "NONE",
 			"result": "FAILURE",
 		}
-
 		json.NewEncoder(w).Encode(response)
 	} else {
 		data, _ := ioutil.ReadAll(response.Body)
@@ -55,6 +56,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 		id = "SESSION" + strings.Trim(id, "\",")
 		Logger("Session " + id + " Obtained")
 
+		//send response back to App
 		response := map[string]string{
 			"id":     string(id),
 			"result": "SUCCESS",
@@ -74,7 +76,7 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 	id := strings.SplitAfter(string(body), "SESSION")[1]
 	id = "SESSION" + id[:len(id)-3]
 
-	//create and make request
+	//build request JSON
 	jsonData := map[string]interface{}{
 		"apiOperation": "PAY",
 		"order": map[string]string{
@@ -89,6 +91,8 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 	jsonValue, _ := json.Marshal(jsonData)
+
+	//make request
 	request, _ := http.NewRequest("PUT", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/testflyte/order/"+id+"/transaction/"+id, bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
 	request.SetBasicAuth(user, pass)
