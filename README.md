@@ -2,4 +2,4 @@
 
 [![Build Status](https://travis-ci.org/dangerous-tech/StreamDL.svg?branch=master)](https://travis-ci.org/dangerous-tech/StreamDL)
 
-Merchant Server API for the MPGS SDK
+Merchant Server Middleware for the MPGS SDK
