@@ -11,6 +11,7 @@ import (
 //set your MID and API Password
 var user string = "merchant.MID"
 var pass string = "APIPASSWORD"
+var mid string = "MID"
 
 //Index Function - Expects: GET Request - Returns: HTTP 200
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -32,7 +33,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 	}
 	jsonValue, _ := json.Marshal(jsonData)
 	//make request
-	request, _ := http.NewRequest("POST", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/testflyte/session", bytes.NewBuffer(jsonValue))
+	request, _ := http.NewRequest("POST", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/"+mid+"/session", bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
 	request.SetBasicAuth(user, pass)
 	client := &http.Client{}
@@ -93,7 +94,7 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 	jsonValue, _ := json.Marshal(jsonData)
 
 	//make request
-	request, _ := http.NewRequest("PUT", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/testflyte/order/"+id+"/transaction/"+id, bytes.NewBuffer(jsonValue))
+	request, _ := http.NewRequest("PUT", "https://test-gateway.mastercard.com/api/rest/version/50/merchant/"+mid+"/order/"+id+"/transaction/"+id, bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
 	request.SetBasicAuth(user, pass)
 	client := &http.Client{}
