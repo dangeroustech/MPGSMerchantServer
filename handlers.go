@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-//set your MID and API Password
+//set your Gateway Information
 var user string = "merchant.MID"
 var pass string = "APIPASSWORD"
 var mid string = "MID"
