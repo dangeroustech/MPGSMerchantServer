@@ -2,24 +2,24 @@ os: linux
 dist: bionic
 language: go
 
-go:
-- master
-- tip
-
 branches:
   only:
   - staging
   - master
 
+script:
+- go test -v
+- go build -v
+
 jobs:
   allow_failures:
     - go: tip
   fast_finish: true
-
-script:
-  - go test -v
-  - go build -v
-  - docker build -t mpgsmerchantserver:build . --no-cache
+  include:
+  - go: master
+    script:
+    - docker build -t mpgsmerchantserver:build . --no-cache
+  - go: tip
 
 notifications:
   email: false
