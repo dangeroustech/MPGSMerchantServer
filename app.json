@@ -23,7 +23,12 @@
             "value": "50"
         }
     },
-    "keywords": ["mastercard", "mobile", "payments", "gateway"],
+    "keywords": [
+        "mastercard",
+        "mobile",
+        "payments",
+        "gateway"
+    ],
     "buildpacks": [
         {
             "url": "heroku/go"
