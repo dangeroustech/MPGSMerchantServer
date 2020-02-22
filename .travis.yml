@@ -11,25 +11,15 @@ branches:
   - staging
   - master
 
-stages:
-  - build_go
-  - build_docker
-
 jobs:
   allow_failures:
     - go: tip
   fast_finish: true
-  include:
-  - stage: "build_go"
-    language: go
-    script:
-    - go test -v
-    - go build -v
-  - stage: "build_docker"
-    language: shell
-    services: docker
-    script:
-    - docker build -t mpgsmerchantserver:build . --no-cache
+
+script:
+  - go test -v
+  - go build -v
+  - docker build -t mpgsmerchantserver:build . --no-cache
 
 notifications:
   email: false
