@@ -4,7 +4,7 @@
 *.dll
 *.so
 *.dylib
-mpgs-api
+mpgsmerchantserver
 
 # Test binary, built with `go test -c`
 *.test
