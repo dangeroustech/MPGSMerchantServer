@@ -1,1 +1,1 @@
-web: mpgsmerchantserver
+web: bin/mpgsmerchantserver
