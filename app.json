@@ -1,0 +1,32 @@
+{
+    "name": "MPGS Merchant Server",
+    "description": "Sample GO application for processing mobile SDK transactions on the Gateway",
+    "repository": "https://github.com/dangerous-tech/MPGSMerchantServer.git",
+    "website": "https://github.com/dangerous-tech/MPGSMerchantServer",
+    "env": {
+        "GATEWAY_MERCHANT_ID": {
+            "required": true,
+            "description": "Your TEST Gateway merchant ID (must begin with 'TEST')"
+        },
+        "GATEWAY_API_PASSWORD": {
+            "required": true,
+            "description": "Your TEST Gateway API password"
+        },
+        "GATEWAY_REGION": {
+            "required": true,
+            "description": "The Gateway region to target (options: ASIA_PACIFIC, EUROPE, NORTH_AMERICA, INDIA, CHINA, MTF)",
+            "value": "MTF"
+        },
+        "GATEWAY_API_VERSION": {
+            "required": true,
+            "description": "The Gateway API version to target",
+            "value": "50"
+        }
+    },
+    "keywords": ["mastercard", "mobile", "payments", "gateway"],
+    "buildpacks": [
+        {
+            "url": "heroku/php"
+        }
+    ]
+}
