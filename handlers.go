@@ -140,8 +140,8 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 //Auth Function: Handles incoming authentication from the App
 func Auth(fn http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		user, pass, _ := r.BasicAuth()
-		if (user != "testsdk") && (pass != "testsdk") {
+		apikey := r.Header.Get("APIKEY")
+		if apikey != "TESTSDK" {
 			http.Error(w, "Unauthorized.", http.StatusUnauthorized)
 			return
 		}
