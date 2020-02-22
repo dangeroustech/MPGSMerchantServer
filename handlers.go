@@ -5,15 +5,16 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"strings"
 )
 
 //set your Gateway Information
-var user string = "merchant.MID"
-var pass string = "APIPASSWORD"
-var mid string = "MID"
-var apiVer string = "50"   //>39
-var region string = "test" //ap, eu, na, in, test
+var mid string = os.Getenv("GATEWAY_MERCHANT_ID")
+var apiVer string = os.Getenv("GATEWAY_API_VERSION") //>39
+var region string = os.Getenv("GATEWAY_REGION")      //ap, eu, na, in, mtf
+var user string = "merchant." + mid
+var pass string = os.Getenv("GATEWAY_API_PASSWORD")
 
 //Index Function - Expects: GET Request - Returns: HTTP 200
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -22,6 +23,10 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 //StartPayment Function - Expects: Empty POST Request - Returns: SessionID and Operation Result
 func StartPayment(w http.ResponseWriter, r *http.Request) {
+
+	if region == "MTF" {
+		region = "test"
+	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
@@ -70,6 +75,10 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 
 //FinishPayment Function - Expects: SessionID - Returns: SessionID and Operation Result
 func FinishPayment(w http.ResponseWriter, r *http.Request) {
+
+	if region == "MTF" {
+		region = "test"
+	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
