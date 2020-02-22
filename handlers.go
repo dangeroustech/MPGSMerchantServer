@@ -1,4 +1,4 @@
-package mpgsmerchantserver
+package main
 
 import (
 	"bytes"
