@@ -7,19 +7,26 @@ branches:
   - staging
   - master
 
-script:
-- go test -v
-- go build -v
+stages:
+  - build_current
+  - build_tip
 
 jobs:
   allow_failures:
     - go: tip
   fast_finish: true
   include:
-  - go: master
+  - stage: "build_current"
+    go: master
     script:
+    - go test -v
+    - go build -v
     - docker build -t mpgsmerchantserver:build . --no-cache
-  - go: tip
+  - stage: "build_tip"
+    go: tip
+    script:
+    - go test -v
+    - go build -v
 
 notifications:
   email: false
