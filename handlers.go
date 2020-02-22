@@ -137,7 +137,7 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//Auth Function: Handles incomning authentication from the App
+//Auth Function: Handles incoming authentication from the App
 func Auth(fn http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		user, pass, _ := r.BasicAuth()
