@@ -2,10 +2,6 @@ os: linux
 dist: bionic
 language: go
 
-go:
-  - master
-  - tip
-
 branches:
   only:
   - staging
@@ -21,12 +17,15 @@ jobs:
   fast_finish: true
   include:
   - stage: "build_go"
-    services: docker
+    go:
+    - master
+    - tip
     script:
     - go test -v
     - go build -v
   - stage: "build_docker"
     language: shell
+    services: docker
     script:
     - docker build -t mpgsmerchantserver:build . --no-cache
 
