@@ -28,8 +28,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
     docker manifest push ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}
 
-    if [ "${DOCKER_TAG}" = "stable" ]; then
-
         docker manifest create ${DOCKER_ORG}/${DOCKER_IMAGE}:latest \
                 ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-amd64 \
                 ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm \
@@ -40,7 +38,6 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
         docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm64 --arch arm64
 
         docker manifest push ${DOCKER_ORG}/${DOCKER_IMAGE}:latest
-    fi
 else
     # If This is a PR, Check Images and Tags Are Correct
     docker images

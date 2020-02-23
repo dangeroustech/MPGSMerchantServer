@@ -28,16 +28,14 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
         --local dockerfile=. \
         --local context=.
     
-    if [ "${DOCKER_TAG}" = "stable" ]; then
-        buildctl build --frontend dockerfile.v0 \
-            --progress=plain \
-            --opt platform=linux/${PLATFORM} \
-            --opt filename=${DOCKERFILE_LOCATION} \
-            --opt build-arg:TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} \
-            --output type=image,name=docker.io/${DOCKER_ORG}/${DOCKER_IMAGE}:latest-${PLATFORM},push=true \
-            --local dockerfile=. \
-            --local context=.
-    fi
+    buildctl build --frontend dockerfile.v0 \
+        --progress=plain \
+        --opt platform=linux/${PLATFORM} \
+        --opt filename=${DOCKERFILE_LOCATION} \
+        --opt build-arg:TRAVIS_PULL_REQUEST=${TRAVIS_PULL_REQUEST} \
+        --output type=image,name=docker.io/${DOCKER_ORG}/${DOCKER_IMAGE}:latest-${PLATFORM},push=true \
+        --local dockerfile=. \
+        --local context=.
 else
     # If This is a PR, Build to Check for Errors
     buildctl build --frontend dockerfile.v0 \
