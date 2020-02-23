@@ -10,6 +10,7 @@ branches:
 stages:
   - build_current
   - build_tip
+  - deploy
 
 jobs:
   allow_failures:
@@ -29,6 +30,22 @@ jobs:
     - go test -v
     - go build -v
     - docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
+  - stage: deploy
+    language: shell
+    before_install:
+    - sudo docker run --privileged linuxkit/binfmt:v0.7
+    - sudo docker run -d --privileged -p 1234:1234 --name buildkit moby/buildkit:latest --addr tcp://0.0.0.0:1234 --oci-worker-platform linux/amd64 --oci-worker-platform linux/arm64 --oci-worker-platform linux/armhf
+    - sudo docker cp buildkit:/usr/bin/buildctl /usr/bin/
+    - export BUILDKIT_HOST=tcp://0.0.0.0:1234
+    addons:
+      apt:
+        packages:
+        - docker-ce
+    script:
+    - ./travis/build-amd64.sh
+    - ./travis/build-arm.sh
+    - ./travis/build-arm64.sh
+    - ./travis/dockerhub-deploy.sh 
 
 notifications:
   email: false
