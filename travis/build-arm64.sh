@@ -5,7 +5,7 @@ set -ev
 # Set Build Options
 PLATFORM=arm64
 DOCKERFILE_LOCATION="./Dockerfile_stable"
-DOCKER_IMAGE="streamdl"
+DOCKER_IMAGE="mpgsmerchantserver"
 DOCKER_ORG="dangeroustech"
 
 # Set Correct Branch
