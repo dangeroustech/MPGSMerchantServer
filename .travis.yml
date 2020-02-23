@@ -21,12 +21,13 @@ jobs:
     script:
     - go test -v
     - go build -v
-    - docker build -t mpgsmerchantserver:build . --no-cache
+    - docker build -t mpgsmerchantserver:stable -f Dockerfile_stable . --no-cache
   - stage: "build_tip"
     go: tip
     script:
     - go test -v
     - go build -v
+    - docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
 
 notifications:
   email: false
