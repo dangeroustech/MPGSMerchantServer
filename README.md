@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/dangerous-tech/StreamDL.svg?branch=master)](https://travis-ci.org/dangerous-tech/StreamDL)
 
-Merchant Server Middleware for the MPGS SDK
+Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com/api/documentation/integrationGuidelines/mobileSDK/integrationModelMobileSDK.html?locale=en_US)
 
 ## Deploy Via Heroku
 
