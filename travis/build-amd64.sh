@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -ev
+export BUILD_ENV=amd64
 
 # Set Build Options
 PLATFORM=amd64

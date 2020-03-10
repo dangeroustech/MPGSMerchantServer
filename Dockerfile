@@ -9,7 +9,9 @@ RUN apk --update add git
 RUN git clone https://github.com/dangerous-tech/MPGSMerchantServer /app
 #Checkout staging if required
 RUN if [ "${TRAVIS_BRANCH}" = "staging" ]; then git checkout staging; fi
-RUN go build -v .
+RUN if [ "${BUILD_ENV}" = "arm" ]; then GOOS=linux GOARCH=arm go build -v .; fi
+RUN if [ "${BUILD_ENV}" = "arm64" ]; then GOOS=linux GOARCH=arm64 go build -v .; fi
+RUN if [ "${BUILD_ENV}" = "amd64" ]; then GOOS=linux GOARCH=amd64 go build -v .; fi
 
 #Run app in thin container
 FROM alpine:latest

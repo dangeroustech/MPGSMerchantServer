@@ -1,6 +1,7 @@
 #!/bin/bash
 
 set -ev
+export BUILD_ENV=arm64
 
 # Set Build Options
 PLATFORM=arm64
