@@ -10,4 +10,10 @@ RUN git clone https://github.com/dangerous-tech/MPGSMerchantServer /app
 #Checkout staging if required
 RUN if [ "${TRAVIS_BRANCH}" = "staging" ]; then git checkout staging; fi
 RUN go build -v .
+
+#Run app in thin container
+FROM alpine:latest
+WORKDIR /app
+ENV PORT=8080
+COPY --from=GO /app/mpgsmerchantserver .
 ENTRYPOINT ["./mpgsmerchantserver"]
