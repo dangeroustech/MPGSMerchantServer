@@ -1,5 +1,5 @@
 #Clone and build app
-FROM golang:1.14.0-alpine
+FROM golang:1.14.0-alpine as GO
 WORKDIR /app
 ARG TRAVIS_BRANCH=$TRAVIS_BRANCH
 ENV LC_ALL=C.UTF-8
