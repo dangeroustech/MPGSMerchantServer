@@ -27,7 +27,7 @@ jobs:
     script:
     - go test -v
     - go build -v
-    - docker build -t mpgsmerchantserver:stable -f Dockerfile_stable . --no-cache
+    - docker build -t mpgsmerchantserver:stable -f Dockerfile . --no-cache
   - stage: "build_tip"
     go: tip
     script:
