@@ -4,7 +4,7 @@ set -ev
 
 # Set Build Options
 PLATFORM=amd64
-DOCKERFILE_LOCATION="./Dockerfile_stable"
+DOCKERFILE_LOCATION="./Dockerfile"
 DOCKER_IMAGE="mpgsmerchantserver"
 DOCKER_ORG="dangeroustech"
 
