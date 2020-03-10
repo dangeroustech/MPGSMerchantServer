@@ -13,8 +13,8 @@ env:
   - secure: "pIrU1bUt6lHIV8W0TgpIPqEtooOz7sAP7r1P8wf7Kg/pkLLLSn2HGxhmSaSvTg45iwroUyXRfZ/F+PZ4c9i+pgvL5ZYAy9vGZ3QtUdJTh5VCYhsdKmuIBZ3mtr64dmpmEkuLNdlM2wNxsfBzWnqLCiysGb76U9C7CNMQVEZdFIt/jL2K6lBZd0y7TfrWVNXUDCGqw+YDPtv50f9vFRT7DrSRkPQgtqAjM2qKK1JlRp2XMP+Re/cDsQ5hkLSafp1Vjrve+x17XKvsUsoxNOU5sSb9PeeJeP+q6u+n+GoRg6/TsARhKNH2C+XgENkKHc8EKv11UgQW7lzRDe6x+EHBD0ItMTFuetpDR9U4GsaZT+u8bzlVn3ffGCbvsAMjPJ9Xr5qUkWkdLg5uMJbLBtQXZMsJTrXUNiidP4gZx4KRiycjR0/A0ft1SVAji13u22xjsQHbryEojxNvG7HaKKgC2R+jJerjHIW6OJQGqCu/EK99G44i7rD16cVFEFIJv4+bPoLG7mXR4bqTcUnBr409f+KZPbonwVyuyJQDRGGnedXxAL4BT9ZfUwCtg1jLNSDmAlbn3ZKy+kVFi2cIzYVrUrAg0MXb9iQ2icyWoJUb4x3pr3Ows6AuTSCsCuLD87618zwaBkx6Zz+dvvoJWgevKA0ymmoXl7mzCtBp31lwHCM="
 
 stages:
-  - build_current
-  - build_tip
+#  - build_current
+#  - build_tip
   - deploy
 
 jobs:
