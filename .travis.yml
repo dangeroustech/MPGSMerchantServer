@@ -28,7 +28,6 @@ jobs:
     - go test -v
     - go build -v
     - docker build -t mpgsmerchantserver:stable -f Dockerfile_stable . --no-cache
-    - docker tag mpgsmerchantserver:stable mpgsmerchantserver:latest
   - stage: "build_tip"
     go: tip
     script:
