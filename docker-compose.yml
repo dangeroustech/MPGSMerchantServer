@@ -1,8 +1,8 @@
 version: "3.7"
 
 services:
-  mpgsmerchantserver:
-    build: .
+  backend:
+    image: dangeroustech/mpgsmerchantserver:stable
     restart: always
     ports:
       - 8080:8080
