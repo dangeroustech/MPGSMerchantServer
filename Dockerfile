@@ -13,6 +13,8 @@ RUN if [ "${TRAVIS_BRANCH}" = "staging" ]; then git checkout staging; fi
 RUN if [ "${BUILD_ENV}" = "arm" ]; then GOOS=linux GOARCH=arm go build -v .; fi
 RUN if [ "${BUILD_ENV}" = "arm64" ]; then GOOS=linux GOARCH=arm64 go build -v .; fi
 RUN if [ "${BUILD_ENV}" = "amd64" ]; then GOOS=linux GOARCH=amd64 go build -v .; fi
+#Catch in case this is a separate build (i.e. not with buildkit)
+RUN if [ ! -f mpgsmerchantserver ]; then go build -v .; fi
 
 #Run app in thin container
 FROM alpine:latest
