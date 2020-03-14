@@ -19,23 +19,23 @@ if [ "${TRAVIS_PULL_REQUEST}" = "false" ]; then
 
     docker manifest create ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} \
             ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-amd64 \
-            ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm \
-            ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm64
+            #${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm \
+            #${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm64
 
     docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-amd64 --arch amd64
-    docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm --arch arm
-    docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm64 --arch arm64
+    #docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm --arch arm
+    #docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}-arm64 --arch arm64
 
     docker manifest push ${DOCKER_ORG}/${DOCKER_IMAGE}:${DOCKER_TAG}
 
         docker manifest create ${DOCKER_ORG}/${DOCKER_IMAGE}:latest \
                 ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-amd64 \
-                ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm \
-                ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm64
+                #${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm \
+                #${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm64
 
         docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-amd64 --arch amd64
-        docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm --arch arm
-        docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm64 --arch arm64
+        #docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm --arch arm
+        #docker manifest annotate ${DOCKER_ORG}/${DOCKER_IMAGE}:latest ${DOCKER_ORG}/${DOCKER_IMAGE}:latest-arm64 --arch arm64
 
         docker manifest push ${DOCKER_ORG}/${DOCKER_IMAGE}:latest
 else

@@ -47,8 +47,8 @@ jobs:
         - docker-ce
     script:
     - ./travis/build-amd64.sh
-    - ./travis/build-arm.sh
-    - ./travis/build-arm64.sh
+    #- ./travis/build-arm.sh
+    #- ./travis/build-arm64.sh
     - ./travis/dockerhub-deploy.sh 
 
 notifications:
