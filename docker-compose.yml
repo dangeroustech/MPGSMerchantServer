@@ -1,8 +1,13 @@
 version: "3.7"
 
 services:
-  mpgsmerchantserver:
-    build: .
+  backend:
+    image: dangeroustech/mpgsmerchantserver:stable
     restart: always
     ports:
       - 8080:8080
+    environment:
+      - GATEWAY_MERCHANT_ID=CHANGEME
+      - GATEWAY_API_PASSWORD=CHANGEME
+      - GATEWAY_REGION=CHANGEME
+      - GATEWAY_API_VERSION=CHANGEME
