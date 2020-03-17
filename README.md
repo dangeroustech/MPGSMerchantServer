@@ -4,9 +4,13 @@
 
 Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com/api/documentation/integrationGuidelines/mobileSDK/integrationModelMobileSDK.html?locale=en_US)
 
-## Deploy Via Heroku
+## Deploy via Heroku
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+## Deploy via Docker
+
+The sample docker-compose.yml can be used by simply running `docker-compose up -d` or the port can be altered by changing the mapping according to the [Docker Port Specification](https://docs.docker.com/compose/compose-file/#ports).
 
 ### Disclaimer
 
