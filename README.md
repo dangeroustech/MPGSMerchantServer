@@ -12,6 +12,14 @@ Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com
 
 The sample docker-compose.yml can be used by simply running `docker-compose up -d` or the port can be altered by changing the mapping according to the [Docker Port Specification](https://docs.docker.com/compose/compose-file/#ports).
 
+## API Specification
+
+|Operation     |URL             |HTTP Method|Authentication|Request                 |Response                                                  |
+|--------------|----------------|-----------|--------------|------------------------|----------------------------------------------------------|
+|Index         |'/'             |GET        |APIKEY Header |N/A                     |N/A, Only Generates Log Output                            |
+|Start Payment |'/startpayment' |POST       |APIKEY Header |N/A                     |"id": "GatewaySessionID/NONE", "result": "SUCCESS/FAILURE"|
+|Finish Payment|'/finishpayment'|PUT        |APIKEY Header |"id": "GatewaySessionID"|"id": "GatewaySessionID", "result": "SUCCESS/FAILURE"     |
+
 ### Disclaimer
 
 All service calls responsible for handling payment information should use best-in-class security practices. This software is intended for TEST / DEVELOPMENT purposes ONLY and is not intended to be used in a production environment. This app should only serve to satisfy the following use cases:
