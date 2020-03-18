@@ -12,29 +12,15 @@ env:
   - secure: "kZwzpm3+XSFpKNE8/7qjO6ywhxGNY/Qa+14hSsyvBzYomWwlVfDsiPg9Pjz9+aA6ump8fieZ+CLwv57An+w6O11PvDOntO+7oWRnvkMgKhobL3wH38T+tCFnrOyE3QMpk7wEoaHpfn7kajoZXuchfwcyeYDPShm2TGcg/cmAFweQvIqGwZXDu8NLG/5aUwhtNXj54844uIBeH2khiUD2z8BuqKEK8cB9FuC3PGQ0BkY3upwB9fiCvacmEBAtXVJg3I18PgCAuTWXA9N1Grxlvv4eHqQlvUJe8A+8JJSpYTTaPxckOSvWTlo3S9HPoBgW0i8mUvLmlRXJchF/G7LDGyXI2gYjpaktRvWkhWonowObV33w6lY/h520gUfl1gzPYVfqoUoSPfXoatGCx+MVzW/A9asJ2elFaAv/xxrJgFY4HBy/qscIt8rwZbxI48V1nvT9/gmo4U6/S6e6BdWAJPZG3eiCVFFnG5FVx6TyHfNuk4WbvclEcyHzYNoCrX7I/0sMiVsuSjMq7zTn03ZZvKuJxI1ipw7Fx0BMgX7mL44BPx+qEjo/U3NrUPz2MQb2b62Fx7V0vANJGbb5oDsamX5TpRVVRH4Am0JtYcdeDBFuP+7S8y/1cnlhXjFHQQKStvYVq12LuXs3iFKDAIUPnIQD7scyclzCG0EPHdZDnU8="
   - secure: "pIrU1bUt6lHIV8W0TgpIPqEtooOz7sAP7r1P8wf7Kg/pkLLLSn2HGxhmSaSvTg45iwroUyXRfZ/F+PZ4c9i+pgvL5ZYAy9vGZ3QtUdJTh5VCYhsdKmuIBZ3mtr64dmpmEkuLNdlM2wNxsfBzWnqLCiysGb76U9C7CNMQVEZdFIt/jL2K6lBZd0y7TfrWVNXUDCGqw+YDPtv50f9vFRT7DrSRkPQgtqAjM2qKK1JlRp2XMP+Re/cDsQ5hkLSafp1Vjrve+x17XKvsUsoxNOU5sSb9PeeJeP+q6u+n+GoRg6/TsARhKNH2C+XgENkKHc8EKv11UgQW7lzRDe6x+EHBD0ItMTFuetpDR9U4GsaZT+u8bzlVn3ffGCbvsAMjPJ9Xr5qUkWkdLg5uMJbLBtQXZMsJTrXUNiidP4gZx4KRiycjR0/A0ft1SVAji13u22xjsQHbryEojxNvG7HaKKgC2R+jJerjHIW6OJQGqCu/EK99G44i7rD16cVFEFIJv4+bPoLG7mXR4bqTcUnBr409f+KZPbonwVyuyJQDRGGnedXxAL4BT9ZfUwCtg1jLNSDmAlbn3ZKy+kVFi2cIzYVrUrAg0MXb9iQ2icyWoJUb4x3pr3Ows6AuTSCsCuLD87618zwaBkx6Zz+dvvoJWgevKA0ymmoXl7mzCtBp31lwHCM="
 
-stages:
-  - build_current
-  - build_tip
-  - deploy
-
 jobs:
   allow_failures:
     - go: tip
   fast_finish: true
   include:
-  - stage: "build_current"
-    go: master
-    script:
-    - go test -v
-    - go build -v
-    - docker build -t mpgsmerchantserver:stable -f Dockerfile . --no-cache
-  - stage: "build_tip"
-    go: tip
-    script:
-    - go test -v
-    - go build -v
-    - docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
+  - go: master
+  - go: tip
   - stage: deploy
+    if: branch = master
     language: shell
     before_install:
     - sudo docker run --privileged linuxkit/binfmt:v0.7
@@ -49,7 +35,12 @@ jobs:
     - ./travis/build-amd64.sh
     #- ./travis/build-arm.sh
     #- ./travis/build-arm64.sh
-    - ./travis/dockerhub-deploy.sh 
+    - ./travis/dockerhub-deploy.sh
+script:
+  - go test -v
+  - go build -v
+  - docker build -t mpgsmerchantserver:stable -f Dockerfile . --no-cache
+  - docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
 
 notifications:
   email: false
