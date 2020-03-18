@@ -20,6 +20,7 @@ jobs:
   - go: master
   - go: tip
   - stage: deploy
+    if: branch = master
     language: shell
     before_install:
     - sudo docker run --privileged linuxkit/binfmt:v0.7
