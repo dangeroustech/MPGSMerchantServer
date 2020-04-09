@@ -1,6 +1,7 @@
 # MPGS Merchant Server
 
 [![Build Status](https://travis-ci.org/dangerous-tech/StreamDL.svg?branch=master)](https://travis-ci.org/dangerous-tech/StreamDL)
+[![Go Report Card](https://goreportcard.com/badge/github.com/dangerous-tech/mpgsmerchantserver)](https://goreportcard.com/report/github.com/dangerous-tech/mpgsmerchantserver)
 
 Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com/api/documentation/integrationGuidelines/mobileSDK/integrationModelMobileSDK.html?locale=en_US)
 
