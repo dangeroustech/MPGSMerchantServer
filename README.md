@@ -1,7 +1,7 @@
 # MPGS Merchant Server
 
-[![Build Status](https://travis-ci.com/dangerous-tech/MPGSMerchantServer.svg?branch=master)](https://travis-ci.com/dangerous-tech/MPGSMerchantServer)
-[![Go Report Card](https://goreportcard.com/badge/github.com/dangerous-tech/mpgsmerchantserver)](https://goreportcard.com/report/github.com/dangerous-tech/mpgsmerchantserver)
+[![Build Status](https://travis-ci.com/dangeroustech/MPGSMerchantServer.svg?branch=master)](https://travis-ci.com/dangeroustech/MPGSMerchantServer)
+[![Go Report Card](https://goreportcard.com/badge/github.com/dangeroustech/mpgsmerchantserver)](https://goreportcard.com/report/github.com/dangeroustech/mpgsmerchantserver)
 
 Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com/api/documentation/integrationGuidelines/mobileSDK/integrationModelMobileSDK.html?locale=en_US)
 
