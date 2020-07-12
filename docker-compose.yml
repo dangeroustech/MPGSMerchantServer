@@ -11,3 +11,5 @@ services:
       - GATEWAY_API_PASSWORD=CHANGEME
       - GATEWAY_REGION=CHANGEME
       - GATEWAY_API_VERSION=CHANGEME
+    volumes:
+      - ./app:/app
