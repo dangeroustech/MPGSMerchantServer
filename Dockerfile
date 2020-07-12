@@ -1,5 +1,5 @@
 #Clone and build app
-FROM golang:1.14-buster as GO
+FROM golang:latest as GO
 WORKDIR /app
 ARG TRAVIS_BRANCH=$TRAVIS_BRANCH
 ARG BUILD_ENV=$BUILD_ENV
