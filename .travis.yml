@@ -39,8 +39,8 @@ jobs:
 script:
   - go test -v
   - go build -v
-  - docker build -t mpgsmerchantserver:stable -f Dockerfile . --no-cache
-  - docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
+  #- docker build -t mpgsmerchantserver:stable -f Dockerfile . --no-cache
+  #- docker build -t mpgsmerchantserver:tip -f Dockerfile_tip . --no-cache
 
 notifications:
   email: false
