@@ -7,7 +7,7 @@ Merchant Server Component for the [MPGS SDK](https://test-gateway.mastercard.com
 
 ## Deploy via Heroku
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/dangeroustech/MPGSMerchantServer)
 
 ## Deploy via Docker
 
