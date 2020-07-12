@@ -14,10 +14,10 @@ func Logger(msg string) {
 	}
 	defer f.Close()
 
-	logger := log.New(f, "MPGS_API", log.LstdFlags)
+	logger := log.New(f, "MPGS_API: ", log.LstdFlags)
 	logger.Println(msg)
 
 	// also output to stdout for Docker and Heroku
-	stdout := log.New(os.Stdout, "MPGS_API", log.LstdFlags)
+	stdout := log.New(os.Stdout, "MPGS_API: ", log.LstdFlags)
 	stdout.Println(msg)
 }
