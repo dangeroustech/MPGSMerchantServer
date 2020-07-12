@@ -8,6 +8,7 @@ import (
 
 func main() {
 	router := NewRouter()
-
-	log.Fatal(http.ListenAndServe(":"+os.Getenv("PORT"), router))
+	port := os.Getenv("PORT")
+	Logger("Starting MPGS Merchant Server on Port " + port)
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
