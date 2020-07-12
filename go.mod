@@ -1,4 +1,4 @@
-module github.com/dangerous-tech/mpgsmerchantserver
+module github.com/dangeroustech/mpgsmerchantserver
 
 go 1.14
 
