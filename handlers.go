@@ -105,7 +105,7 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 	jsonValue, _ := json.Marshal(jsonData)
-
+	Logger("SEND: " + string(jsonValue))
 	//make request
 	request, _ := http.NewRequest("PUT", "https://"+region+"-gateway.mastercard.com/api/rest/version/"+apiVer+"/merchant/"+mid+"/order/"+id+"/transaction/"+id, bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
@@ -113,6 +113,7 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	data, _ := ioutil.ReadAll(response.Body)
+	Logger("RECEIVE: " + string(data))
 
 	//read the response
 	if err != nil {
