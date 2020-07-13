@@ -15,6 +15,10 @@ The sample docker-compose.yml can be used by simply running `docker-compose up -
 
 ## API Specification
 
+Client Authentication is handled in the _Auth_ method of the _handlers.go_ file. By default this is a Header of _"APIKEY"_ with a value of _"TESTSDK"_. Feel free to modify this if necessary.
+
+![clientAuth](./docs/clientAuth.png)
+
 |Operation     |URL             |HTTP Method|Authentication|Request                 |Response                                           |
 |--------------|----------------|-----------|--------------|------------------------|---------------------------------------------------|
 |Index         |'/'             |GET        |APIKEY Header |N/A                     |N/A, Only Generates Log Output                     |
