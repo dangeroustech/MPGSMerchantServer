@@ -39,6 +39,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 	jsonValue, _ := json.Marshal(jsonData)
+	Logger("SEND: " + string(jsonValue))
 	//make request
 	request, _ := http.NewRequest("POST", "https://"+region+"-gateway.mastercard.com/api/rest/version/"+apiVer+"/merchant/"+mid+"/session", bytes.NewBuffer(jsonValue))
 	request.Header.Set("Content-Type", "application/json")
@@ -62,6 +63,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 		id := strings.SplitAfter(string(data), "SESSION")[1]
 		id = strings.SplitAfter(id, ",")[0]
 		id = "SESSION" + strings.Trim(id, "\",")
+		Logger("RECEIVE: " + string(data))
 		Logger("Session " + id + " Obtained")
 
 		//send response back to App
@@ -142,6 +144,7 @@ func Auth(fn http.HandlerFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		apikey := r.Header.Get("APIKEY")
 		if apikey != "TESTSDK" {
+			Logger("Unauthorized Access Attempted")
 			http.Error(w, "Unauthorized.", http.StatusUnauthorized)
 			return
 		}
