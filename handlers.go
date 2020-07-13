@@ -35,7 +35,7 @@ func StartPayment(w http.ResponseWriter, r *http.Request) {
 	jsonData := map[string]interface{}{
 		"correlationId": "001",
 		"session": map[string]string{
-			"authenticationLimit": "3",
+			"authenticationLimit": "2",
 		},
 	}
 	jsonValue, _ := json.Marshal(jsonData)
