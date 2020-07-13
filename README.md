@@ -15,11 +15,11 @@ The sample docker-compose.yml can be used by simply running `docker-compose up -
 
 ## API Specification
 
-|Operation     |URL             |HTTP Method|Authentication|Request                 |Response                                                  |
-|--------------|----------------|-----------|--------------|------------------------|----------------------------------------------------------|
-|Index         |'/'             |GET        |APIKEY Header |N/A                     |N/A, Only Generates Log Output                            |
-|Start Payment |'/startpayment' |POST       |APIKEY Header |N/A                     |"id": "GatewaySessionID/NONE", "result": "SUCCESS/FAILURE"|
-|Finish Payment|'/finishpayment'|PUT        |APIKEY Header |"id": "GatewaySessionID"|"id": "GatewaySessionID", "result": "SUCCESS/FAILURE"     |
+|Operation     |URL             |HTTP Method|Authentication|Request                 |Response                                           |
+|--------------|----------------|-----------|--------------|------------------------|---------------------------------------------------|
+|Index         |'/'             |GET        |APIKEY Header |N/A                     |N/A, Only Generates Log Output                     |
+|Start Payment |'/startpayment' |POST       |APIKEY Header |N/A                     |"id": "SessionID/NONE", "result": "SUCCESS/FAILURE"|
+|Finish Payment|'/finishpayment'|PUT        |APIKEY Header |"id": "SessionID"       |"id": "SessionID", "result": "SUCCESS/FAILURE"     |
 
 ### Disclaimer
 
