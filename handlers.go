@@ -113,7 +113,6 @@ func FinishPayment(w http.ResponseWriter, r *http.Request) {
 	client := &http.Client{}
 	response, err := client.Do(request)
 	data, _ := ioutil.ReadAll(response.Body)
-	Logger("RECEIVE: " + string(data))
 
 	//read the response
 	if err != nil {
